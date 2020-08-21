@@ -14,7 +14,9 @@ for element in job_elements:
     location = element.find('div', class_='location')
     if not (title and company and location):
         continue
+    link = element.find('a')['href']
     print(title.text.strip())
     print(company.text.strip())
     print(location.text.strip())
+    print(link)
     print()
