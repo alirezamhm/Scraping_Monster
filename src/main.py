@@ -1,8 +1,17 @@
 import requests
-from bs4 import BeautifulSoup
 import re
+import os
+import sys
+from bs4 import BeautifulSoup
+import argparse
 
-URL = 'https://www.monster.com/jobs/search/?q=Software-Developer&where=Iran'
+
+parser = argparse.ArgumentParser()
+parser.add_argument('Location', metavar='location', type=str, help='location to search')
+args = parser.parse_args()
+location = args.Location
+
+URL = 'https://www.monster.com/jobs/search/?q=Software-Developer&where='+location
 page = requests.get(URL)
 
 soup = BeautifulSoup(page.content, 'html.parser')
